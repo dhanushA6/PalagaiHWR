@@ -34,7 +34,6 @@ const TamilDrawingApp = () => {
         { transliteration: "ai", tamil: "ஐ" },
         { transliteration: "o", tamil: "ஒ" },
         { transliteration: "oo", tamil: "ஓ" },
-        { transliteration: "au", tamil: "ஔ" }
       ]
     },
     {
