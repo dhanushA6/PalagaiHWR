@@ -1,0 +1,483 @@
+/* Tamil Drawing App Styles */
+
+/* Base styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f4f8;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container styles */
+.tamil-app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3b82f6;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.main-card {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Header section */
+.game-header {
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.level-selector {
+  padding: 0.75rem 1.5rem;
+  background-color: #ffffff;
+  border: 2px solid #3b82f6;
+  border-radius: 9999px;
+  color: #1e40af;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.level-selector:hover {
+  background-color: #eff6ff;
+}
+
+.level-selector:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+.stats-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background-color: #eff6ff;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  min-width: 85px;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+/* Progress bar */
+.progress-container {
+  width: 100%;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  height: 0.5rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #3b82f6;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+/* Game content */
+.game-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .game-content {
+    flex-direction: row;
+  }
+}
+
+.drawing-area {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .drawing-area {
+    width: 66.666667%;
+  }
+}
+
+.result-area {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .result-area {
+    width: 33.333333%;
+  }
+}
+
+/* Prompt card */
+.prompt-card {
+  background-color: #eff6ff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.prompt-text {
+  font-size: 1.125rem;
+  color: #4b5563;
+}
+
+.tamil-letter {
+  font-size: 3.5rem;
+  margin: 0.5rem 0;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+/* Multi-canvas area */
+.multi-canvas-container {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.canvas-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 0.5rem;
+  min-height: 340px;
+  scrollbar-width: thin;
+  scrollbar-color: #d1d5db transparent;
+}
+
+.canvas-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.canvas-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.canvas-scroll-container::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 6px;
+}
+
+.canvas-item {
+  position: relative;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.canvas-item.active {
+  width: 500px;
+  height: 300px;
+  border-color: #3b82f6;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+}
+
+.canvas-item:not(.active) {
+  width: 120px;
+  height: 80px;
+  align-self: center;
+}
+
+.drawing-canvas {
+  background-color: #f9fafb;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.canvas-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.canvas-number {
+  background: #2c3e50;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.canvas-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.canvas-btn:hover {
+  background: #f0f0f0;
+}
+
+.clear-btn {
+  color: #2c3e50;
+}
+
+.delete-btn {
+  color: #e40707;
+}
+
+.add-canvas-btn:hover {
+  background-color: #2563eb;
+  transform: scale(1.1);
+}
+
+.mini-prediction {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(59, 130, 246, 0.8);
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.25rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Buttons */
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn-clear {
+  background-color: #ef4444;
+  color: white;
+}
+
+.btn-clear:hover {
+  background-color: #dc2626;
+}
+
+.btn-predict {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn-predict:hover {
+  background-color: #2563eb;
+}
+
+.btn-submit {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #059669;
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Result panels */
+.prediction-card {
+  background-color: #f9fafb;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  animation: fade-in 0.3s ease-out;
+}
+
+.prediction-title {
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.prediction-value {
+  font-size: 2rem;
+  text-align: center;
+  margin: 0.5rem 0;
+  color: #1f2937;
+}
+
+.confidence-text {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+.character-breakdown {
+  margin-top: 1rem;
+}
+
+.breakdown-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: #374151;
+}
+
+.characters-list {
+  background-color: white;
+  border-radius: 0.25rem;
+  border: 1px solid #e5e7eb;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.character-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.character-item:last-child {
+  border-bottom: none;
+}
+
+.error-card {
+  background-color: #fee2e2;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  color: #b91c1c;
+}
+
+.feedback-card {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  animation: fade-in 0.3s ease-out;
+}
+
+.feedback-correct {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.feedback-incorrect {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.tamil-letter {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+/* Canvas transitions */
+@keyframes canvas-activate {
+  from { transform: scale(0.9); opacity: 0.8; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.canvas-item.active {
+  animation: canvas-activate 0.3s ease-out;
+}
+
+/* Loading spinner */
+.loading {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
